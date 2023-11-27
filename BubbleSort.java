@@ -1,14 +1,28 @@
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class BubbleSort {
 
     public static void main(String[] args) {
         var vetor = Arrays.asList(3, 5, 2, 1, 6, 7, 9, 0, 8);
 
-        bubbleSort(vetor);
+        // bubbleSort(vetor);
+        bubbleSortAlternative(vetor);
         vetor.forEach(e -> System.out.println(e));
+    }
+
+    public static void bubbleSortAlternative(List<Integer> vector) {
+
+        var size = vector.size();
+        for (var i = 0; i < size; ++i) {
+            for (var j = 0; j < size - 1 - i; ++j) {
+                if (vector.get(j) > vector.get(j + 1)) {
+                    var aux = vector.get(j);
+                    vector.set(j, vector.get(j + 1));
+                    vector.set(j + 1, aux);
+                }
+            }
+        }
     }
 
     public static void bubbleSort(List<Integer> vetor) {
