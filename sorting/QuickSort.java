@@ -1,17 +1,19 @@
+package sorting;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class QuickSort {
+public class QuickSort implements ISort<Integer> {
+
     public static void main(String[] args) {
-        var vetor = Arrays.asList(9, 1, 4, 2, 5, 7, 3);
+        var vector = Arrays.asList(9, 1, 4, 2, 5, 7, 3);
 
-        var result = quickSort(vetor);
-
-        result.forEach(e -> System.out.println(e));
+        var q = new QuickSort();
+        q.sort(vector);
     }
 
-    public static List<Integer> quickSort(List<Integer> vetor) {
+    public List<Integer> quickSort(List<Integer> vetor) {
         if (vetor.size() <= 1) {
             return vetor;
         }
@@ -36,5 +38,10 @@ public class QuickSort {
         result.addAll(quickSort(greater));
         return result;
     }
-}
 
+    @Override
+    public void sort(List<Integer> vector) {
+        vector = quickSort(vector);
+        vector.forEach(System.out::println);
+    }
+}

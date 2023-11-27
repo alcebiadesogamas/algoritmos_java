@@ -1,17 +1,23 @@
+package sorting;
+
 import java.util.Arrays;
 import java.util.List;
 
-public class BubbleSort {
+public class BubbleSort implements ISort<Integer> {
 
     public static void main(String[] args) {
         var vetor = Arrays.asList(3, 5, 2, 1, 6, 7, 9, 0, 8);
 
-        // bubbleSort(vetor);
-        bubbleSortAlternative(vetor);
-        vetor.forEach(e -> System.out.println(e));
+        new BubbleSort().sort(vetor);
+        vetor.forEach(System.out::println);
     }
 
-    public static void bubbleSortAlternative(List<Integer> vector) {
+    @Override
+    public void sort(List<Integer> vector) {
+        this.bubbleSortAlternative(vector);
+    }
+
+    public void bubbleSortAlternative(List<Integer> vector) {
 
         var size = vector.size();
         for (var i = 0; i < size; ++i) {
@@ -25,7 +31,7 @@ public class BubbleSort {
         }
     }
 
-    public static void bubbleSort(List<Integer> vetor) {
+    public void bubbleSort(List<Integer> vetor) {
         boolean flag = true;
         while (flag) {
             var current = 0;
